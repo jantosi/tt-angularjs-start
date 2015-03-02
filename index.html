@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="pl">
+    <meta charset="UTF-8">
+    <title>AngularJS app</title>
+
+    <script type="text/javascript" src="js/angular.min.js" ></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/tt-angular.css" />
+
+</head>
+<body>
+    <div>
+        <label for="nameField" >Imię</label>
+        <input id="nameField" type="text" placeholder="Podaj imię" ng-model="name" />
+
+        <h1>Hej, {{name}}</h1>
+    </div>
+
+</body>
+</html>

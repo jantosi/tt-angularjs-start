@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="ttApp">
 <head lang="pl">
     <meta charset="UTF-8">
     <title>AngularJS app</title>
 
-    <script type="text/javascript" src="js/angular.min.js" ></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/tt-angular.css" />
 
 </head>
 <body>
-    <div>
+    <div ng-controller="MyFirstController">
         <label for="nameField" >Imię</label>
         <input id="nameField" type="text" placeholder="Podaj imię" ng-model="name" />
 
-        <h1>Hej, {{name}}</h1>
+        <h1>{{ greeting }}</h1>
+        <h2>Hi, {{name}}</h2>
+
+        <a ng-click="makeFullGreeting()">[Full greeting please]</a>
     </div>
 
 </body>

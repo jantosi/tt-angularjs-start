@@ -16,10 +16,18 @@
         <label for="nameField" >Imię</label>
         <input id="nameField" type="text" placeholder="Podaj imię" ng-model="name" />
 
+        <input type="submit" value="Say hello!" ng-click="sayHello()"/>
+
         <h1>{{ greeting }}</h1>
         <h2>Hi, {{name}}</h2>
 
         <a ng-click="makeFullGreeting()">[Full greeting please]</a>
+
+        <ul>
+            <li ng-repeat="person in peopleWeAlreadyGreeted">
+                {{ person.id }} &mdash; {{ person.name }}
+            </li>
+        </ul>
     </div>
 
 </body>

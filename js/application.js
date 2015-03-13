@@ -4,10 +4,25 @@
     ]);
 
     ttAppModule.controller('MyFirstController', ['$scope', function($scope){
-            $scope.greeting = "Hello, World!";
 
-            $scope.makeFullGreeting = function(){
-                window.alert($scope.greeting + " -" + $scope.name);
+        $scope.peopleWeAlreadyGreeted = [];
+        $scope.lastAssignedId = 0;
+        $scope.greeting = "Hello, World!";
+
+
+        $scope.makeFullGreeting = function(){
+            window.alert($scope.greeting + " -" + $scope.name);
+        };
+
+        $scope.sayHello = function () {
+            var newId = ($scope.lastAssignedId + 1);
+            var person = {
+                name: $scope.name,
+                id: newId
             };
-        }]);
+            $scope.peopleWeAlreadyGreeted.push(person);
+
+            $scope.lastAssignedId = newId;
+        }
+    }]);
 })(angular);

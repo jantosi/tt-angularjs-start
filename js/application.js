@@ -24,5 +24,12 @@
 
             $scope.lastAssignedId = newId;
         }
+
+        $scope.remove = function(person){
+            var index = $scope.peopleWeAlreadyGreeted.indexOf(person);
+            if(index !== -1){
+                $scope.peopleWeAlreadyGreeted.splice(index, 1);
+            }
+        }
     }]);
 })(angular);

@@ -12,22 +12,39 @@
 
 </head>
 <body>
-    <div ng-controller="MyFirstController">
+    <div class="container" ng-controller="MyFirstController">
+        <form ng-submit="sayHello()">
         <label for="nameField" >Imię</label>
-        <input id="nameField" type="text" placeholder="Podaj imię" ng-model="name" />
+        <input id="nameField" type="text" placeholder="Podaj imię"
+               ng-model="name"/>
 
-        <input type="submit" value="Say hello!" ng-click="sayHello()"/>
 
         <h1>{{ greeting }}</h1>
         <h2>Hi, {{name}}</h2>
 
         <a ng-click="makeFullGreeting()">[Full greeting please]</a>
 
-        <ul>
-            <li ng-repeat="person in peopleWeAlreadyGreeted">
-                {{ person.id }} &mdash; {{ person.name }}
-            </li>
-        </ul>
+        <div class="row">
+            <table class="table table-striped col-md-8">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>x</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="person in peopleWeAlreadyGreeted">
+                        <td>{{ person.id }}</td>
+                        <td>{{ person.name }}</td>
+                        <td><a ng-click="remove(person)">Remove this person</a></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        </form>
     </div>
 
 </body>

@@ -28,14 +28,14 @@
             <table class="table table-striped col-md-8">
                 <thead>
                 <tr>
-                    <th>id</th>
-                    <th>name</th>
-                    <th>x</th>
+                    <th ng-click="orderByField='id'">id</th>
+                    <th ng-click="orderByField='name'">name</th>
+                    <th ng-click="orderByField='x'">x</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                    <tr ng-repeat="person in peopleWeAlreadyGreeted">
+                    <tr ng-repeat="person in peopleWeAlreadyGreeted | orderBy : orderByField">
                         <td>{{ person.id }}</td>
                         <td>{{ person.name }}</td>
                         <td><a ng-click="remove(person)">Remove this person</a></td>

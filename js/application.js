@@ -9,7 +9,6 @@
         $scope.lastAssignedId = 0;
         $scope.greeting = "Hello, World!";
 
-
         $scope.makeFullGreeting = function(){
             window.alert($scope.greeting + " -" + $scope.name);
         };

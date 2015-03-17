@@ -3,10 +3,9 @@
         //no dependencies
     ]);
 
-    ttAppModule.controller('MyFirstController', ['$scope', function($scope){
+    ttAppModule.controller('MyFirstController', ['$scope', 'GreetedPeopleService', function($scope, greetedPeopleService){
 
-        $scope.peopleWeAlreadyGreeted = [];
-        $scope.lastAssignedId = 0;
+
         $scope.greeting = "Hello, World!";
 
         $scope.makeFullGreeting = function(){
@@ -14,21 +13,14 @@
         };
 
         $scope.sayHello = function () {
-            var newId = ($scope.lastAssignedId + 1);
-            var person = {
-                name: $scope.name,
-                id: newId
-            };
-            $scope.peopleWeAlreadyGreeted.push(person);
-
-            $scope.lastAssignedId = newId;
-        }
+            greetedPeopleService.addGreetedPerson(
+                greetedPeopleService.createGreetedPerson($scope.name)
+            );
+            $scope.peopleWeAlreadyGreeted = greetedPeopleService.getGreetedPeople();
+        };
 
         $scope.remove = function(person){
-            var index = $scope.peopleWeAlreadyGreeted.indexOf(person);
-            if(index !== -1){
-                $scope.peopleWeAlreadyGreeted.splice(index, 1);
-            }
+            greetedPeopleService.removeGreetedPerson(person);
         }
     }]);
 })(angular);

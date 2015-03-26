@@ -1,6 +1,6 @@
 (function (angular) {
     var ttAppModule = angular.module('ttApp');
-    ttAppModule.service('GreetedPeopleService', function(){
+    ttAppModule.service('GreetedPeopleService', ['$http', function($http){
         var peopleWeAlreadyGreeted = [];
         var lastAssignedId = 0;
 
@@ -31,13 +31,21 @@
             return person;
         }
 
+        var address = "http://private-63a58-ttangularjsstart.apiary-mock.com";
+        function fetchOnline(){
+            return $http.get(address+'/people').success(function(data){
+                peopleWeAlreadyGreeted = data;
+            });
+        }
+
         return {
             getGreetedPeople: getGreetedPeople,
             addGreetedPerson: addGreetedPerson,
             removeGreetedPerson: remove,
-            createGreetedPerson: createPerson
+            createGreetedPerson: createPerson,
+            fetchOnline: fetchOnline
         };
-    });
+    }]);
 
 })(angular);
 
